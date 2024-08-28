@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good Example - Time Limits Control</title>
+    <style>
+        .alert {
+            color: red;
+            font-weight: bold;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+        }
+    </style>
+    <!-- Example of a time limit control with a meta refresh -->
+    <meta id="refreshMeta" http-equiv="refresh" content="600"> <!-- Refresh every 10 minutes -->
+</head>
+<body>
+    <div class="container">
+        <h1>Example of Time Limit Control</h1>
+        
+        <!-- Section for controlling refresh -->
+        <section>
+            <h2>Refresh Control</h2>
+            <p>We refresh this page every 10 minutes to show new content. You can adjust the refresh settings below:</p>
+            <button onclick="adjustRefreshTime()">Increase Refresh Interval by 10x</button>
+            <p class="alert" id="refreshAlert"></p>
+        </section>
+
+        <!-- Section for redirection -->
+        <section>
+            <h2>Redirection Control</h2>
+            <p>This section will redirect to a new page after 20 minutes. You can control the redirection time:</p>
+            <button onclick="adjustRedirectionTime()">Increase Redirection Interval by 10x</button>
+            <p class="alert" id="redirectionAlert"></p>
+        </section>
+
+        <!-- Section for session time limit -->
+        <section>
+            <h2>Session Time Limit</h2>
+            <p>Your session will expire after 30 minutes of inactivity. You can extend the session below:</p>
+            <button onclick="extendSession()">Extend Session by 20 minutes</button>
+            <p class="alert" id="sessionAlert"></p>
+        </section>
+    </div>
+
+    <script>
+        let refreshInterval = 600; // 10 minutes in seconds
+        let redirectionInterval = 1200; // 20 minutes in seconds
+        let sessionTimeout = 1800; // 30 minutes in seconds
+
+        function adjustRefreshTime() {
+            refreshInterval *= 10; // Increase interval by 10x
+            document.getElementById('refreshMeta').setAttribute('content', refreshInterval);
+            document.getElementById('refreshAlert').textContent = `Refresh interval increased to ${refreshInterval / 60} minutes.`;
+        }
+
+        function adjustRedirectionTime() {
+            redirectionInterval *= 10; // Increase interval by 10x
+            document.getElementById('redirectionAlert').textContent = `Redirection interval increased to ${redirectionInterval / 60} minutes.`;
+        }
+
+        function extendSession() {
+            sessionTimeout += 1200; // Extend session by 20 minutes
+            document.getElementById('sessionAlert').textContent = `Session time limit extended to ${sessionTimeout / 60} minutes.`;
+        }
+    </script>
+</body>
+</html>
